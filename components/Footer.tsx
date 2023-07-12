@@ -34,18 +34,18 @@ const Footer = () => {
             </div>
           ))}
         </div>
-        <div className="flex justify-between items-center flex-wrap mt-10 border-t border-gray-300 sm:px16 px-6 py-10">
-          <p className="text-base text-gray-500">
-            Car Show @2023. All rigths reserved &copy;
-          </p>
-          <div className="footer__copyrights-link">
-            <Link href="/" className="text-gray-500">
-              Privacy Policy
-            </Link>
-            <Link href="/" className="text-gray-500">
-              Terms of use
-            </Link>
-          </div>
+      </div>
+      <div className="flex justify-between items-center flex-wrap mt-10 border-t border-gray-300 sm:px16 px-6 py-10">
+        <p className="text-base text-gray-500">
+          Car Show @2023. All rigths reserved &copy;
+        </p>
+        <div className="footer__copyrights-link">
+          <Link href="/" className="text-gray-500">
+            Privacy Policy
+          </Link>
+          <Link href="/" className="text-gray-500">
+            Terms of use
+          </Link>
         </div>
       </div>
     </div>
