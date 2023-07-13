@@ -4,6 +4,7 @@ import React, { Fragment } from "react";
 import { CarProps } from "@/types";
 import { Transition, Dialog } from "@headlessui/react";
 import Image from "next/image";
+import { generateCarImageUrl } from "@/utils";
 
 interface CarDetailsProp {
   isOpen: boolean;
@@ -40,7 +41,7 @@ const CarDetails = ({ car, isOpen, closeModal }: CarDetailsProp) => {
               >
                 <Dialog.Panel
                   className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto transform 
-                rounded-2xl bg-white text-left shadow-xsl transition-all flex flex-col gap-5"
+                rounded-2xl bg-white p-6 text-left shadow-xl transition-all flex flex-col gap-5"
                 >
                   <button
                     className="absolute top-2 right-2 z-10 w-fit p-2 bg-primary-blue-100 rounded-full"
@@ -58,7 +59,7 @@ const CarDetails = ({ car, isOpen, closeModal }: CarDetailsProp) => {
                   <div className="flex-1 flex flex-col gap-3">
                     <div className="relative w-full h-40 bg-pattern bg-cover bg-center rounded-lg">
                       <Image
-                        src="/hero.png"
+                        src={generateCarImageUrl(car)}
                         alt="car"
                         fill
                         priority
@@ -68,7 +69,7 @@ const CarDetails = ({ car, isOpen, closeModal }: CarDetailsProp) => {
                     <div className="flex gap-3">
                       <div className="flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg">
                         <Image
-                          src="/hero.png"
+                          src={generateCarImageUrl(car, "33")}
                           alt="car"
                           fill
                           priority
@@ -77,7 +78,7 @@ const CarDetails = ({ car, isOpen, closeModal }: CarDetailsProp) => {
                       </div>
                       <div className="flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg">
                         <Image
-                          src="/hero.png"
+                          src={generateCarImageUrl(car, "29")}
                           alt="car"
                           fill
                           priority
@@ -86,13 +87,31 @@ const CarDetails = ({ car, isOpen, closeModal }: CarDetailsProp) => {
                       </div>
                       <div className="flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg">
                         <Image
-                          src="/hero.png"
+                          src={generateCarImageUrl(car, "13")}
                           alt="car"
                           fill
                           priority
                           className="object-contain"
                         />
                       </div>
+                    </div>
+                  </div>
+                  <div className="flex-1 flex flex-col gap-2">
+                    <h2 className="text-xl text-semibold capitalize">
+                      {car.make} {car.model}
+                    </h2>
+                    <div className="flex flex-wrap gap-4 mt-4">
+                      {Object.entries(car).map(([key, values]) => (
+                        <div className="flex gap-3 justify-between w-full">
+                          <h2 className="text-xl text-grey capitalize text-semibold">
+                            {/* {key.split("_").join(" ")} */}
+                            {key.replace(/[_]/, " ")}
+                          </h2>
+                          <p className="text-semibold text-black-100">
+                            {values}
+                          </p>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </Dialog.Panel>
